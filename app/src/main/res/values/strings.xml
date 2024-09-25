@@ -1,10 +1,29 @@
 <resources>
+    <!-- App name -->
     <string name="app_name">Car Advisor</string>
-    <string-array name="car_brands_array">
+
+    <!-- Text for the main activity -->
+    <string name="initial_advice_text">Select a car brand to get advice.</string>
+    <string name="fetching_advice_text">Fetching advice for %1$s...</string>
+
+    <!-- Specific advice texts for car brands -->
+    <string name="advice_toyota">Toyota is known for its reliability and longevity. It’s a great choice for long-term use\nIts built tough\ngreate fuel efficient engine\nbest resell value</string>
+    <string name="advice_honda">Honda vehicles are renowned for their fuel efficiency and resale value.</string>
+    <string name="advice_bmw">BMW provides a luxury driving experience with high performance and advanced technology.</string>
+    <string name="advice_audi">Audi combines elegance with performance, offering a smooth and stylish ride.</string>
+    <string name="advice_mercedes_benz">Mercedes-Benz is synonymous with high-end luxury and cutting-edge technology.</string>
+    <string name="advice_hyundai">Hyundai provides excellent value with a long warranty and feature-rich cars.</string>
+
+    <!-- Default advice text -->
+    <string name="default_advice">No advice available for the selected car brand.</string>
+
+    <!-- Array of car brands -->
+    <string-array name="car_brands">
         <item>Toyota</item>
         <item>Honda</item>
         <item>BMW</item>
-        <item>Ford</item>
-        <item>Tesla</item>
+        <item>Audi</item>
+        <item>Mercedes-Benz</item>
+        <item>Hyundai</item>
     </string-array>
 </resources>

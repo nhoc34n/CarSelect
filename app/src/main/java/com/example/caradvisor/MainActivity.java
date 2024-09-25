@@ -1,7 +1,9 @@
 package com.example.caradvisor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -10,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner carBrandSpinner;
-    private Button getAdviceButton;
+    private Spinner carSpinner;
+    private Button findCarButton;
     private TextView adviceTextView;
 
     @Override
@@ -19,42 +21,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        carBrandSpinner = findViewById(R.id.carBrandSpinner);
-        getAdviceButton = findViewById(R.id.getAdviceButton);
+        carSpinner = findViewById(R.id.carBrandSpinner);
+        findCarButton = findViewById(R.id.getAdviceButton);
         adviceTextView = findViewById(R.id.adviceTextView);
+
+        // Set initial text in the TextView
+        adviceTextView.setText(R.string.initial_advice_text);
 
         // Populate Spinner with car brands
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.car_brands_array, android.R.layout.simple_spinner_item);
+                R.array.car_brands, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        carBrandSpinner.setAdapter(adapter);
+        carSpinner.setAdapter(adapter);
 
-        // Set up button click listener
-        getAdviceButton.setOnClickListener(new View.OnClickListener() {
+        findCarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String selectedBrand = carBrandSpinner.getSelectedItem().toString();
-                String advice = getAdviceForBrand(selectedBrand);
-                adviceTextView.setText(advice);
+                String selectedCar = carSpinner.getSelectedItem().toString();
+
+                // Update the TextView in the MainActivity (if needed)
+                adviceTextView.setText(getString(R.string.fetching_advice_text, selectedCar));
+
+                // Create an Intent to start MainActivity2
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra("selectedCar", selectedCar);
+                startActivity(intent);
             }
         });
-    }
-
-    private String getAdviceForBrand(String brand) {
-        switch (brand) {
-            case "Toyota":
-                return "Reliable and affordable!" +
-                        " \n1st Choice in Bangladesh \n Best resell value";
-            case "Honda":
-                return "Great for fuel efficiency.";
-            case "BMW":
-                return "Luxury with performance.";
-            case "Ford":
-                return "Built tough!";
-            case "Tesla":
-                return "Innovative and electric.";
-            default:
-                return "Select a brand to get advice.";
-        }
     }
 }

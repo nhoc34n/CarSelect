@@ -6,23 +6,6 @@
     android:padding="16dp"
     android:gravity="center">
 
-    <Spinner
-        android:id="@+id/carBrandSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:entries="@array/car_brands"/>
-
-    <Button
-        android:id="@+id/getAdviceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Get Advice"
-        android:layout_margin="16dp"/>
-
     <TextView
         android:id="@+id/adviceTextView"
         android:layout_width="wrap_content"
